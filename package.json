@@ -6,6 +6,9 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "lint": "eslint --fix --ext .js .",
+    "migrate": "knex migrate:latest --knexfile models/knexfile.js",
+    "rollback": "knex migrate:rollback --knexfile models/knexfile.js ",
+    "addMigrate": "knex --knexfile models/knexfile.js migrate:make ",
     "test": "mocha test && yarn lint"
   },
   "dependencies": {
@@ -17,6 +20,7 @@
     "mocha": "^6.2.0",
     "morgan": "~1.9.1",
     "nodemon": "^1.19.1",
+    "pg": "^7.12.0",
     "prettier": "^1.18.2",
     "pug": "2.0.0-beta11"
   }
