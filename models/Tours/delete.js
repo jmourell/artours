@@ -8,16 +8,8 @@ module.exports = (knex, Tour) => {
       .then(() => {
         return knex("Tours").select();
       })
-      .then(tours => new Tour(tours.pop())) // create a user model out of the plain database response
+      .then(tours => new Tour(tours.pop())) // create a tour model out of the plain database response
       .catch(err => {
-        // IF delete entry doesn't exist customize error messaage
-        // if (
-        //   err.message.match("duplicate key value") ||
-        //   err.message.match("UNIQUE constraint failed")
-        // )
-        //   return Promise.reject(new Error("That tour doesn't exist"));
-
-        // throw unknown errors
         return Promise.reject(err);
       });
   };

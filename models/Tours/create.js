@@ -4,9 +4,9 @@ module.exports = (knex, Tour) => {
   return params => {
     const { tourName, description, address, photo } = params;
 
-    if (!validateTourname(username)) {
+    if (!validateTourname(tourName)) {
       return Promise.reject(
-        new Error("Username must be provided, and be at least two characters")
+        new Error("tourname must be provided, and be at least two characters")
       );
     }
 

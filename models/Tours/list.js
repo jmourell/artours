@@ -5,8 +5,7 @@ module.exports = (knex, Tour) => {
         .select()
         .then(tours => {
           return tours.map(tour => new Tour(tour));
-          //return users;
         })
-    ); // fix me!
+    );
   };
 };

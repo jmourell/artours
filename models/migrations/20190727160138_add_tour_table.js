@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-  // create the 'users' table with three columns
+  // create the 'Tours' table with three columns
   return knex.schema.createTable("Tours", t => {
     t.increments() // auto-incrementing id column
       .index(); // index this column
