@@ -3,7 +3,8 @@ const createFakeTour = () => {
   const city = faker.address.city();
   return {
     tour_name: city,
-    description: city + faker.company.bs() + faker.company.catchPhrase(),
+    description:
+      city + " " + faker.company.bs() + " " + faker.company.catchPhrase(),
     address: faker.address.streetAddress(),
     photo: faker.image.imageUrl()
   };

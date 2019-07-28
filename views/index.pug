@@ -3,3 +3,21 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  p 
+  |  To get a list of avaliable tours, send a get request to (/tours)
+
+  p
+  | To get a single tour, send a get request to (/tours/:tourName)
+
+  p 
+  | To erase a tour, send a delete request with the tour name (/tours/:tourName)
+
+  p 
+  |To create a new tour send a post request to (/tours) make sure to include a 
+  |tourName, description, location and a photo field
+
+  p 
+  |To edit a single tour, send an patch request to (/tours/:tourName), the 
+  |tourName in the url will be updated you can change the tourName, description,
+  |location and a photo field.
