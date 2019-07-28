@@ -4,17 +4,33 @@ module.exports = (knex, Tour) => {
 
     const { tourName } = params;
 
-    knex("Tours")
+    return knex("Tours")
       .where({ tour_name: tourName })
       .then(row => {
-        return Object.assign(row, params);
+        console.log("params", params);
+        return Object.assign(row[0], params);
       })
-      .update(row)
-      .then(tours => {
-        console.log(tours);
-        if (tours.length) return new Tour(tours.pop());
-
-        throw new Error(`Error finding tour ${tourName}`);
+      .then(row => {
+        // Remove "bad naming conventions" fields from original object:
+        let { tour_name, id, description, address, photo } = row;
+        console.log(tour_name);
+        const update = { tour_name, description, address, photo };
+        return knex("Tours")
+          .where({ tour_name: tourName })
+          .update(update, [
+            "tour_name",
+            "id",
+            "description",
+            "address",
+            "photo",
+            "created_at"
+          ])
+          .then(tours => {
+            if (tours.length) {
+              return new Tour(tours.pop());
+            }
+            throw new Error(`Error finding tour ${tourName}`);
+          });
       });
   };
 };

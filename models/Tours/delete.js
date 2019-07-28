@@ -3,12 +3,13 @@ module.exports = (knex, Tour) => {
     const { tourName } = params;
 
     return knex("Tours")
-      .where("tour_name", tourName.toLowerCase())
+      .where("tour_name", tourName)
       .del()
       .then(() => {
-        return knex("Tours").select();
+        return knex("Tours")
+          .select()
+          .then(tours => tours.map(tour => new Tour(tour)));
       })
-      .then(tours => new Tour(tours.pop())) // create a tour model out of the plain database response
       .catch(err => {
         return Promise.reject(err);
       });
