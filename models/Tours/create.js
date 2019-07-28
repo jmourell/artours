@@ -12,14 +12,14 @@ module.exports = (knex, Tour) => {
 
     return knex("Tours")
       .insert({
-        tour_name: tourName.toLowerCase(),
+        tour_name: tourName,
         address: address,
         photo: photo,
         description: description
       })
       .then(() => {
         return knex("Tours")
-          .where({ tour_name: tourName.toLowerCase() })
+          .where({ tour_name: tourName })
           .select();
       })
       .then(tours => new Tour(tours.pop())) // create a user model out of the plain database response

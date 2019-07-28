@@ -28,6 +28,7 @@ module.exports = knex => {
     create: require("./create")(knex, Tour),
     list: require("./list")(knex, Tour),
     get: require("./get")(knex, Tour),
+    edit: require("./edit")(knex, Tour),
     delete: require("./delete.js")(knex, Tour)
   };
 };
