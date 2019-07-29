@@ -1,16 +1,17 @@
 # artours
-Setup
+## Setup
  yarn install
-Create a database called artours in pgsql
+## Create a database called artours in pgsql
 CREATE DATABASE artours
-To Migrate the database
+## To Migrate the database
 yarn migrate
-To Seed the database
+## To Seed the database
 yarn seed
 
 
 
-Tours Api
+# Tours Api
+
 Welcome to Tours Api
 
 To get a list of avaliable tours, send a get request to (/tours)
